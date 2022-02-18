@@ -10,7 +10,8 @@ import {
     Input
   } from 'reactstrap';
   import { connect } from 'react-redux';
-import { addItem } from '../flux/actions/itemActions';
+import { addItem } from '../flux/actions/itemActions'; 
+import uuid from 'uuid';
 
 
 class ItemModal extends Component{
@@ -29,7 +30,13 @@ class ItemModal extends Component{
     }
     onSubmit = e =>{
         e.preventDefault();
-    
+        const newItem   ={
+            id : uuid(),
+            name : this.state.name
+        }
+
+        this.props.addItem(newItem);
+        this.toggle();
 
     }
     render(){
@@ -74,5 +81,9 @@ class ItemModal extends Component{
 
 
 }
+const mapStateToProps= state =>({
+    item: state.item
 
-export default connect()(ItemModal);
+})
+
+export default connect(mapStateToProps, {addItem})(ItemModal);
