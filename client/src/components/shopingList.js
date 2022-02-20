@@ -14,7 +14,7 @@ class ShoppingList extends Component{
     this.props.getItems();
   }
   onDeleteClick = id =>{
-this.props.deleteItem();
+this.props.deleteItem(id);
   }
   render(){
   
@@ -25,8 +25,8 @@ this.props.deleteItem();
        
         <ListGroup>
           <TransitionGroup className="Shoping-List">
-          {items.map(({id,name})=>(
-            <CSSTransition key={id} timeout={5000} classNames="fade">
+          {items.map(({_id,name})=>(
+            <CSSTransition key={_id} timeout={5000} classNames="fade">
 
               <ListGroupItem>
                 <Button
@@ -34,7 +34,7 @@ this.props.deleteItem();
                 color="danger"
                 size="sm"
                 onClick={
-                  this.onDeleteClick.bind(this, id)
+                  this.onDeleteClick.bind(this, _id)
                 }
                 >&times;</Button>
                 {name}
