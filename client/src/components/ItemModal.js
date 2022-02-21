@@ -53,7 +53,7 @@ class ItemModal extends Component{
             toggle={this.toggle}
             >
                 <ModalHeader toggle={this.toggle}>
-                    Add to ShoppingList
+                    Add to Shopping List
 
                 </ModalHeader>
                 <ModalBody>
