@@ -23,16 +23,18 @@ const Item = require('../../models/Item');
 
  // get api/item
     router.post('/',(req, res)=>{
+        console.log('here')
         const newItem= new Item(
             {
                 name:req.body.name
             }
         );
- newItem.save().then(item=>res.json(item)); 
 
-   Item.find()
-    .sort( {date: -1})
-    .then(items =>res.json(items)) 
+ return newItem.save().then(item=>res.json(item)); 
+
+//    Item.find()
+//     .sort( {date: -1})
+//     .then(items =>res.json(items)) 
 });
  
 
